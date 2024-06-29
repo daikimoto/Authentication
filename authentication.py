@@ -4,8 +4,8 @@ import Constration as Const
 def Authencation():
     
     auth_count = 0
-    while auth_count < 3:
-        
+    while auth_count < Const.MAX_AUTH:
+
         # 認証情報を入力させる
         print(Const.AUTH_START_MESSAGE)
         auth_id = input(Const.USER_ID_INPUT_MESSAGE)
