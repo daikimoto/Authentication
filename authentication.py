@@ -1,4 +1,4 @@
-import MySQLdb
+import DBConnection as DBConn
 import Constration as Const
 
 def Authencation():
@@ -12,10 +12,10 @@ def Authencation():
         auth_password = input(Const.PASSWORD_INPUT_MESSAGE)
 
         # DBからユーザ情報取得
-        user_id, user_password = InputUserInfo(auth_id)
+        user_id, user_password = DBConn.getUserInfo(auth_id)
 
         # 認証情報とユーザ情報のパスワード一致チェック
-        if(PassWordCheck(auth_password, user_password)):
+        if(isMatchedPassword(auth_password, user_password)):
             print(Const.AUTH_SUCCESS_MESSAGE)
             return True
         else:
@@ -24,27 +24,12 @@ def Authencation():
 
     return False
             
-
-
-
-# DBからのユーザ情報取得
-def InputUserInfo(inputAuth):
-    
-    # DBに接続
-    conn = MySQLdb.connect(host=Const.DB_HOST, user=Const.DB_USER, passwd=Const.DB_PASS, db=Const.DB)
-    cur = conn.cursor()
-
-    sql = 'select * from user_auth where user_id = "{}";'.format(inputAuth)
-    cur.execute(sql)
-    userInfo = cur.fetchone()
-    return userInfo[0], userInfo[1]
-
 # 認証情報入力データチェック
-def InputAuthInfoCheck(input):
+def isCheckedInputAuthInfoData(input):
     return 0
 
 # 認証情報とユーザ情報のパスワード一致チェック
-def PassWordCheck(auth_password, user_password):
+def isMatchedPassword(auth_password, user_password):
     if(auth_password == user_password):
         return True
     else:
