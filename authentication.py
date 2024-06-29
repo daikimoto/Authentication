@@ -19,8 +19,9 @@ def Authencation():
             print(Const.AUTH_SUCCESS_MESSAGE)
             return True
         else:
+            print(Const.AUTH_FAULT_MESSAGE)
             auth_count += 1
-            print(str(auth_count) + Const.AUTH_FAULT_MESSAGE)
+            print(str(auth_count) + Const.AUTH_FAULT_COUNT_MESSAGE)
 
     return False
             

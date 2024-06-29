@@ -10,4 +10,5 @@ PASSWORD_INPUT_MESSAGE = "パスワード :"
 
 MAX_AUTH = 3
 AUTH_SUCCESS_MESSAGE = "認証に成功しました！"
-AUTH_FAULT_MESSAGE = "回目の認証に失敗しました。"
+AUTH_FAULT_MESSAGE = "ユーザIDもしくはパスワードが違います。"
+AUTH_FAULT_COUNT_MESSAGE = "回目の認証に失敗しました。"
